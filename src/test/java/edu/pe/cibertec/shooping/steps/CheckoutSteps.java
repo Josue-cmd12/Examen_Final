@@ -23,14 +23,11 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class CheckoutSteps {
 
-<<<<<<< HEAD
     @Before
     public void setTheStage() {
         OnStage.setTheStage(new net.serenitybdd.screenplay.actors.OnlineCast());
     }
 
-=======
->>>>>>> a4af2ae (pregunta 2 actualizada)
     @Given("que el usuario tiene productos en el carrito")
     public void tieneProductos() {
         OnStage.theActorCalled("Andrea").attemptsTo(
