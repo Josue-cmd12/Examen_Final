@@ -9,7 +9,6 @@ import net.serenitybdd.screenplay.actors.Cast;
 import net.serenitybdd.screenplay.actors.OnStage;
 
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.nio.charset.MalformedInputException;
 import java.time.Duration;
 
