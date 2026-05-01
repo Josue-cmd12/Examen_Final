@@ -2,11 +2,14 @@ package edu.pe.cibertec.shooping.steps;
 
 import edu.pe.cibertec.shooping.questions.TheProductList;
 import edu.pe.cibertec.shooping.tasks.FilterByCategory;
+import edu.pe.cibertec.shooping.ui.CatalogPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.actors.OnStage;
+import net.serenitybdd.screenplay.waits.WaitUntil;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 import static org.hamcrest.Matchers.equalTo;
 
 public class ProductSteps {
@@ -18,7 +21,14 @@ public class ProductSteps {
 
     @Then("{word} should see the product {string}")
     public void should_see_the_product(String actor, String productName) {
-        OnStage.theActorCalled(actor)
-                .should(seeThat(TheProductList.contains(productName), equalTo(true)));
+        OnStage.theActorCalled(actor).attemptsTo(
+
+                WaitUntil.the(CatalogPage.productByName(productName), isVisible())
+                        .forNoMoreThan(10).seconds()
+        );
+
+        OnStage.theActorCalled(actor).should(
+                seeThat(TheProductList.contains(productName), equalTo(true))
+        );
     }
 }

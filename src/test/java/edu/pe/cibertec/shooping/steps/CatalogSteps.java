@@ -52,12 +52,16 @@ public class CatalogSteps {
     }
 
     @When("filtra por la categoria {string}")
-    public void  filtra_por_la_categoria(String categoria){
-        OnStage.theActorInTheSpotlight().attemptsTo(FilterByCategory.of(categoria));
+    public void filtra_por_la_categoria(String categoria) {
+        OnStage.theActorInTheSpotlight().attemptsTo(
+                FilterByCategory.of(categoria)
+        );
     }
 
     @Then("deberia ver el producto {string}")
-    public void deberia_ver_el_producto(String producto){
-        OnStage.theActorInTheSpotlight().should(seeThat(TheProductList.contains(producto), equalTo(true)));
+    public void deberia_ver_el_producto(String producto) {
+        OnStage.theActorInTheSpotlight().should(
+                seeThat(TheProductList.contains(producto), equalTo(true))
+        );
     }
 }

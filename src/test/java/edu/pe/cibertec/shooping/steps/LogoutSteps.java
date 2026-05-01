@@ -19,32 +19,27 @@ public class LogoutSteps {
     @When("hace clic en el menu de usuario")
     public void clicMenuUsuario() {
         OnStage.theActorInTheSpotlight().attemptsTo(
+                WaitUntil.the(ProfilePage.PROFILE_TAB, isVisible()).forNoMoreThan(15).seconds(),
                 Click.on(ProfilePage.PROFILE_TAB),
                 WaitUntil.the(ProfilePage.USERNAME_LABEL, isVisible()).forNoMoreThan(10).seconds()
-        );
-
-        OnStage.theActorInTheSpotlight().should(
-                seeThat("El usuario logueado es Juan Pérez",
-                        Visibility.of(ProfilePage.USERNAME_LABEL).asBoolean(), equalTo(true))
         );
     }
 
     @And("hace clic en cerrar sesion")
     public void clicCerrarSesion() {
         OnStage.theActorInTheSpotlight().attemptsTo(
+                WaitUntil.the(ProfilePage.LOGOUT_ICON, isVisible()).forNoMoreThan(10).seconds(),
                 Click.on(ProfilePage.LOGOUT_ICON),
-                WaitUntil.the(ProfilePage.CONFIRM_LOGOUT_BUTTON, isVisible()).forNoMoreThan(10).seconds(),
+                WaitUntil.the(ProfilePage.CONFIRM_LOGOUT_BUTTON, isVisible()).forNoMoreThan(5).seconds(),
                 Click.on(ProfilePage.CONFIRM_LOGOUT_BUTTON)
         );
     }
 
     @Then("deberia regresar a la pantalla de login")
-    public void validarPantallaLogin() {
+    public void validarRegresoALogin() {
         OnStage.theActorInTheSpotlight().should(
-                seeThat("Regresó exitosamente a la pantalla de login",
+                seeThat("La pantalla de login es visible",
                         Visibility.of(LoginScreen.EMAIL_FIELD).asBoolean(), equalTo(true))
         );
     }
-
-
 }

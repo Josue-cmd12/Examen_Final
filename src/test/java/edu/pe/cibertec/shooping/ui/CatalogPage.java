@@ -12,12 +12,12 @@ public class CatalogPage {
             .located(AppiumBy.className("android.widget.EditText"));
 
 
-    public static final Target productByName(String productName){
+    public static Target productByName(String productName) {
         return Target.the("producto " + productName)
-                .located(AppiumBy.xpath("//*[contains(@content-desc,'" + productName + "') or contains(@text,'" + productName + "')]"));
+                .located(AppiumBy.xpath("//android.widget.TextView[@text='" + productName + "']"));
     }
 
-    public static final  Target categoryFilter(String category) {
+    public static Target categoryFilter(String category) {
         return Target.the("filtro de categoria " + category)
                 .located(AppiumBy.xpath("//android.widget.TextView[@text='" + category + "']"));
     }

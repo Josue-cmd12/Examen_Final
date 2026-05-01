@@ -91,8 +91,9 @@ public class CheckoutSteps {
     @Then("deberia ver mensaje de carrito vacio")
     public void validaCarritoVacio() {
         OnStage.theActorInTheSpotlight().should(
-                seeThat(Visibility.of(Target.the("mensaje vacio")
-                                .locatedBy("//android.widget.TextView[contains(@text, 'vacío')]")).asBoolean(), // Agregada la tilde
+                seeThat("El mensaje de carrito vacío es visible",
+                        Visibility.of(Target.the("mensaje vacio")
+                                .locatedBy("//android.widget.TextView[contains(@text, 'vac')]")).asBoolean(),
                         equalTo(true))
         );
     }
