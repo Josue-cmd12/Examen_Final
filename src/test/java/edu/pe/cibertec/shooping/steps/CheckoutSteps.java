@@ -73,6 +73,7 @@ public class CheckoutSteps {
     @And("ingresa los datos de envio pero deja la direccion vacia")
     public void ingresaDatosSinDireccion() {
         OnStage.theActorInTheSpotlight().attemptsTo(
+                WaitUntil.the(CheckoutInfoPage.ADDRESS_FIELD, isVisible()).forNoMoreThan(10).seconds(),
                 Enter.theValue("").into(CheckoutInfoPage.ADDRESS_FIELD),
                 Enter.theValue("Lima").into(CheckoutInfoPage.CITY_FIELD),
                 Enter.theValue("15037").into(CheckoutInfoPage.ZIP_CODE_FIELD),
